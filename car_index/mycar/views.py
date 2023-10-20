@@ -20,12 +20,11 @@ def list_view(request):
 
   return render(request, "list_view.html", context)
 
-# <appname>/views.py
-
 def detail_view(request):
   context = {}
   context["data"] = MyCarModel.objects.get(id = id)
 
   return render(request, "detail_view.html", context)
 
+# <appname>/views.py
 
