@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from .models import MyCarModel, ExampleModel
+from .models import MyCarModel
+# from .models import ExampleModel
 from .forms import MyCarForm
 
 def create_view(request):
@@ -20,5 +21,11 @@ def list_view(request):
   return render(request, "list_view.html", context)
 
 # <appname>/views.py
+
+def detail_view(request):
+  context = {}
+  context["data"] = MyCarModel.objects.get(id = id)
+
+  return render(request, "detail_view.html", context)
 
 
