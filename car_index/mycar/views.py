@@ -2,9 +2,7 @@
 from django.shortcuts import (get_object_or_404, render, HttpResponseRedirect)
 
 from .models import MyCarModel
-# from .models import ExampleModel
 from .forms import MyCarForm
-# from .forms import ExampleForm
 
 def create_view(request):
   context = {}
@@ -14,7 +12,6 @@ def create_view(request):
 
   context['form'] = form
   return render(request, "create_view.html", context)
-
 
 def list_view(request):
   context = {}
@@ -27,8 +24,6 @@ def detail_view(request, id):
   context["data"] = MyCarModel.objects.get(id = id)
 
   return render(request, "detail_view.html", context)
-
-# <appname>/views.py
 
 def update_view(request, id):
   context = {}
@@ -43,5 +38,15 @@ def update_view(request, id):
   context["form"] = form
 
   return render(request, "update_view.html", context)
+
+def delete_view(request, id):
+  context = {}
+  obj = get_object_or_404(MyCarModel, id = id)
+
+  if request.method == "POST":
+    obj.delete()
+    return HttpResponseRedirect("/")
+  
+  return render(request, "delete_view.html", context)
 
 
