@@ -20,7 +20,7 @@ def list_view(request):
 
   return render(request, "list_view.html", context)
 
-def detail_view(request):
+def detail_view(request, id):
   context = {}
   context["data"] = MyCarModel.objects.get(id = id)
 
