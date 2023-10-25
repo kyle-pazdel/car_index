@@ -42,7 +42,8 @@ def update_view(request, id):
 def delete_view(request, id):
   context = {}
   obj = get_object_or_404(MyCarModel, id = id)
-  context["data"] = MyCarModel.objects.get( id = id)
+
+  context["data"] = obj
 
   if request.method == "POST":
     obj.delete()
