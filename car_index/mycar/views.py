@@ -9,6 +9,7 @@ def create_view(request):
   form = MyCarForm(request.POST or None)
   if form.is_valid():
     form.save()
+    return HttpResponseRedirect("/")
 
   context['form'] = form
   return render(request, "create_view.html", context)
