@@ -26,10 +26,6 @@ def list_view(request):
 
 
 class DetailView(DetailView):
-  # context = {}
-  # context["data"] = MyCarModel.objects.get(id = id)
-
-  # api_url = 'https://api.api-ninjas.com/v1/cars?model={}'.format()
   api_url = 'https://api.api-ninjas.com/v1/cars?model={"civic"}'
   response = requests.get(api_url, headers={'X-Api-Key': os.environ['API_KEY']})
 
@@ -37,8 +33,7 @@ class DetailView(DetailView):
   model = MyCarModel
   def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
-      # context['data'] = MyCarModel.objects.all()
-      # context["car_data"] = {"test":"TEST"}
+      context["car_data"] = {"test_car": "CIVIC"}
       return context
 
 
