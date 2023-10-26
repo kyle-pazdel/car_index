@@ -5,10 +5,13 @@
     {{object.year}} <br/>
     {{object.nickname}} <br/>
     {{object.id}} <br/>
+    CTX : {{test.model}}
     <hr/>
+
     api_data: {{api_data}} <br/>
-    
+  
     <hr/>
+
     {% for api_data in api_dataset %}
     MPG: {{api_data.city_mpg}} <br/>
     CLASS: {{api_data.class}} <br/>
@@ -21,7 +24,7 @@
     TRANSMISSION: {{api_data.transmission}} <br/>
     <hr/>
     {% endfor %}
-    <hr/>
+
     <a href="/">Home</a> | <a href="/{{data.id}}/update">Update</a> | <a href="/{{data.id}}/delete">Delete</a>
 
   </div>

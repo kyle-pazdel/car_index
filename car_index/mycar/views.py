@@ -30,13 +30,16 @@ class DetailView(DetailView):
 
   def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
+      print("MODEL", context.make)
+      # SEE Model and potentiall make accessor for this and other attributes
+
       api_url = 'https://api.api-ninjas.com/v1/cars?model=civic&make=honda&year=2017'
       response = requests.get(api_url, headers={'X-Api-Key': os.environ['API_KEY']})
       if response.status_code == requests.codes.ok:
         context["api_dataset"] = response.json()
-        # context["api_data"] = response.json()[0]
       else:
         context["api_dataset"] = "Error:", response.status_code, response.text 
+
       return context
 
   
