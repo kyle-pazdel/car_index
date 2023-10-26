@@ -1,6 +1,6 @@
-# <appname>/views.py
 from django.shortcuts import (get_object_or_404, render, HttpResponseRedirect)
 from django.views.generic.detail import DetailView
+from django.http import JsonResponse
 
 from .models import MyCarModel
 from .forms import MyCarForm
@@ -26,25 +26,20 @@ def list_view(request):
 
 
 class DetailView(DetailView):
-  api_url = 'https://api.api-ninjas.com/v1/cars?model={"civic"}'
-  response = requests.get(api_url, headers={'X-Api-Key': os.environ['API_KEY']})
 
   template_name="detail_view.html"
   model = MyCarModel
   def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
+      api_url = 'https://api.api-ninjas.com/v1/cars?model={"civic"}'
+      response = requests.get(api_url, headers={'X-Api-Key': os.environ['API_KEY']})
+      if response.status_code == requests.codes.ok:
+        context["api_data"] = response.text, "SUCCESS!!!"
+      else:
+        context["api_data"] = "Error:", response.status_code, response.text    
       context["car_data"] = {"test_car": "CIVIC"}
       return context
 
-
-  # if response.status_code == requests.codes.ok:
-  #   context["car_data"] = response.text
-  # else:
-  #   context["car_data"] = response.status_code, response.text    
-
-  
-
-  # return render(request, "detail_view.html", context)
   
 
 def update_view(request, id):
