@@ -31,13 +31,13 @@ class DetailView(DetailView):
   model = MyCarModel
   def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
-      api_url = 'https://api.api-ninjas.com/v1/cars?model={"civic"}'
+      api_url = 'https://api.api-ninjas.com/v1/cars?model=civic'
       response = requests.get(api_url, headers={'X-Api-Key': os.environ['API_KEY']})
       if response.status_code == requests.codes.ok:
         context["api_data"] = response.text, "SUCCESS!!!"
       else:
         context["api_data"] = "Error:", response.status_code, response.text    
-      context["car_data"] = {"test_car": "CIVIC"}
+        context["api_data"] = "Not yet..."    
       return context
 
   
