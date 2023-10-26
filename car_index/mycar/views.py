@@ -3,6 +3,9 @@ from django.shortcuts import (get_object_or_404, render, HttpResponseRedirect)
 
 from .models import MyCarModel
 from .forms import MyCarForm
+import os
+
+secret = os.environ['API_KEY']
 
 def create_view(request):
   context = {}
