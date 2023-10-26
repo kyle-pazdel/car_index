@@ -27,16 +27,16 @@ def list_view(request):
 class DetailView(DetailView):
   template_name="detail_view.html"
   model = MyCarModel
-  
+
   def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
       api_url = 'https://api.api-ninjas.com/v1/cars?model=civic&make=honda&year=2017'
       response = requests.get(api_url, headers={'X-Api-Key': os.environ['API_KEY']})
       if response.status_code == requests.codes.ok:
-        context["api_data"] = response.json()[0]
+        context["api_dataset"] = response.json()
+        # context["api_data"] = response.json()[0]
       else:
-        context["api_data"] = "Error:", response.status_code, response.text    
-        context["api_data"] = "Not yet..."    
+        context["api_dataset"] = "Error:", response.status_code, response.text 
       return context
 
   

@@ -7,6 +7,9 @@
     {{object.id}} <br/>
     <hr/>
     api_data: {{api_data}} <br/>
+    
+    <hr/>
+    {% for api_data in api_dataset %}
     MPG: {{api_data.city_mpg}} <br/>
     CLASS: {{api_data.class}} <br/>
     COMBINATION: {{api_data.combination_mpg}} <br/>
@@ -16,6 +19,8 @@
     FUEL_TYPE: {{api_data.fuel_type}} <br/>
     HIGHWAY_MPG: {{api_data.highway_mpg}} <br/>
     TRANSMISSION: {{api_data.transmission}} <br/>
+    <hr/>
+    {% endfor %}
     <hr/>
     <a href="/">Home</a> | <a href="/{{data.id}}/update">Update</a> | <a href="/{{data.id}}/delete">Delete</a>
 
