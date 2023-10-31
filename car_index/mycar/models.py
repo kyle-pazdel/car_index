@@ -11,7 +11,7 @@ class MyCarModel(models.Model):
   
 
   def __str__(self):
-    return self.title
+    return self.model
   
 # TODO: Potentially add accessors for each attribute
 

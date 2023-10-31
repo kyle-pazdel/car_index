@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import (get_object_or_404, render, HttpResponseRedirect)
 from django.views.generic.detail import DetailView
 
@@ -24,16 +25,15 @@ def list_view(request):
   return render(request, "list_view.html", context)
 
 
-class DetailView(DetailView):
+class MyCarDetailView(DetailView):
   template_name="detail_view.html"
   model = MyCarModel
 
   def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
-      print("MODEL", context.make)
-      # SEE Model and potentiall make accessor for this and other attributes
+      context["test"] = self.object.make
 
-      api_url = 'https://api.api-ninjas.com/v1/cars?model=civic&make=honda&year=2017'
+      api_url = f'https://api.api-ninjas.com/v1/cars?model={self.object.model.lower()}&make={self.object.make.lower()}&year={self.object.year}'
       response = requests.get(api_url, headers={'X-Api-Key': os.environ['API_KEY']})
       if response.status_code == requests.codes.ok:
         context["api_dataset"] = response.json()
