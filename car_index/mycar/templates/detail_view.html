@@ -1,14 +1,18 @@
-  <div class="main">
 
-    {{object.make}} <br/>
-    {{object.model}} <br/>
-    {{object.year}} <br/>
+
+<div class="main">
+    <a href="/">Home</a> | <a href="/{{object.id}}/update">Update</a> | <a href="/{{object.id}}/delete">Delete</a>
+    
+    <hr/>
+
     {{object.nickname}} <br/>
-    {{object.id}} <br/>
+    {{object.make}}, {{object.model}} <br/>
+    {{object.year}} <br/>
+    {{object.pk}} <br/>
     CTX : {{test}}
     <hr/>
 
-    api_data: {{api_data}} <br/>
+    api_data: {{api_dataset}} <br/>
   
     <hr/>
 
@@ -22,9 +26,10 @@
     FUEL_TYPE: {{api_data.fuel_type}} <br/>
     HIGHWAY_MPG: {{api_data.highway_mpg}} <br/>
     TRANSMISSION: {{api_data.transmission}} <br/>
+    MAKE: {{api_data.make}} <br/>
+    MODEL: {{api_data.model}} <br/>
+    YEAR: {{api_data.year}} <br/>
     <hr/>
     {% endfor %}
-
-    <a href="/">Home</a> | <a href="/{{data.id}}/update">Update</a> | <a href="/{{data.id}}/delete">Delete</a>
 
   </div>
