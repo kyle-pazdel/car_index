@@ -35,7 +35,10 @@ class MyCarDetailView(DetailView):
       api_url = f'https://api.api-ninjas.com/v1/cars?limit=50&model={self.object.model.lower()}&make={self.object.make.lower()}&year={self.object.year}'
       response = requests.get(api_url, headers={'X-Api-Key': os.environ['API_KEY']})
       if response.status_code == requests.codes.ok:
-        context["api_dataset"] = response.json()
+        if len(response.json()) != 0:
+          context["api_dataset"] = response.json()
+        else:
+          context["no_api_data_message"] = "No Car Data, is your car's model accurate?"
       else:
         context["api_dataset"] = "Error:", response.status_code, response.text 
 

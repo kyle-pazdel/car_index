@@ -15,7 +15,7 @@
     api_data: {{api_dataset}} <br/>
   
     <hr/>
-
+    {% if api_dataset%}
     {% for api_data in api_dataset %}
     MPG: {{api_data.city_mpg}} <br/>
     CLASS: {{api_data.class}} <br/>
@@ -31,5 +31,8 @@
     YEAR: {{api_data.year}} <br/>
     <hr/>
     {% endfor %}
+    {% else %}
+    {{no_api_data_message}}
+    {% endif %}
 
   </div>
