@@ -39,7 +39,7 @@ class MyCarDetailView(DetailView):
         if len(response.json()) != 0:
           context["api_dataset"] = response.json()
         else:
-          context["no_api_data_message"] = "No Car Data, is your car's model accurate?"
+          context["no_api_data_message"] = "No Car Data. Are your car's model and year accurate?"
       else:
         context["api_dataset"] = "Error:", response.status_code, response.text 
 
