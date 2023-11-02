@@ -1,5 +1,5 @@
 <div class="main">
-  <h2><a href="/create">Add a Car</a></h2>
+  <h2><a href="/create/">Add a Car</a></h2>
 
   {% for data in dataset %}
 
@@ -8,7 +8,7 @@
   {{ data.year}}<br/>
   {{ data.nickname}}<br/>
   {{ data.id}}<br/>
-  <a href="/{{data.id}}">See Details</a>
+  <a href="/{{data.id}}/">See Details</a>
   <hr/>
 
   {% endfor %}
