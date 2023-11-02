@@ -30,7 +30,7 @@ class MyCarDetailView(DetailView):
 
   def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
-      context["test"] = context
+      context["test"] = self.object.make
 
       api_url = f'https://api.api-ninjas.com/v1/cars?limit=50&model={self.object.model.lower()}&make={self.object.make.lower()}&year={self.object.year}'
       response = requests.get(api_url, headers={'X-Api-Key': os.environ['API_KEY']})
