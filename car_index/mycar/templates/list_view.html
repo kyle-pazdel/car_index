@@ -1,7 +1,7 @@
 {% extends "_base.html" %}
 {% block content %}
 <div class="main">
-  <a href="/create/">Add a Car</a>
+  <a class="text-slate-200" href="/create/">Add a Car</a>
   {% for data in dataset %}
   
   <h4 class="text-5xl text-green-800">My Cars</h4>
@@ -14,7 +14,7 @@
       <li>{{ data.id}}</li>
     </ul>
   </h5>
-  <a href="/{{data.id}}/">See Details</a>
+  <a type="button" class="font-bold text-white py-2 px-4 rounded bg-gradient-to-r from-sky-500 to-blue-950 hover:from-slate-900 hover:to-red-500" href="/{{data.id}}/">See Details</a>
   <hr/>
   
   {% endfor %}
