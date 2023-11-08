@@ -1,18 +1,25 @@
+{% extends "_base.html" %}
+{% block content %}
 <div class="main">
-  <h2><a href="/create/">Add a Car</a></h2>
-
+  <a href="/create/">Add a Car</a>
   {% for data in dataset %}
-
-  {{ data.make}}<br/>
-  {{ data.model}}<br/>
-  {{ data.year}}<br/>
-  {{ data.nickname}}<br/>
-  {{ data.id}}<br/>
+  
+  <h4 class="text-5xl text-green-800">My Cars</h4>
+  <h5 class="text-3x1 text-blue-800">
+    <ul>
+      <li>{{ data.make}}</li>
+      <li>{{ data.model}}</li>
+      <li>{{ data.year}}</li>
+      <li>{{ data.nickname}}</li>
+      <li>{{ data.id}}</li>
+    </ul>
+  </h5>
   <a href="/{{data.id}}/">See Details</a>
   <hr/>
-
+  
   {% endfor %}
-
+  
 </div>
+{% endblock content %}
 
 
